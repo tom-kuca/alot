@@ -55,8 +55,12 @@ jobs:
         run: pip install .
 
       - name: Prepare a minimal notmuch config file for the tests
+        run: touch ~/.notmuch-config
+
+      - name: Prepare a minimal hooks file for the tests
         run: |
-          touch ~/.notmuch-config
+          mkdir -p ~/.config/alot
+          touch ~/.config/alot/hooks.py
 
       - name: Run tests
         run: python3 setup.py test
